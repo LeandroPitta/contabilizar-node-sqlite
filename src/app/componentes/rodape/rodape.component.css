@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    align-items: center;
+    background: #eff5f6;
+    height: 2.8rem;
+}
+
+p {
+    margin-left: 4%;
+    font-family: 'Futura BK BT', Arial, sans-serif;
+    color: #3a4859;
+}

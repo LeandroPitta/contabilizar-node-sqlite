@@ -5,9 +5,27 @@
     height: 4rem;
 }
 
-h1{
-    padding-left: 4%;
+h1 {
+    margin-left: 4%;
     font-family: 'Futura BD BT', Arial, sans-serif;
     font-weight: bold;
+}
+
+.gradiente-texto {
+    background-image: linear-gradient(to right, #f39200, #ffffff),
+        linear-gradient(to bottom, #f39200, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+div {
+    width: 74%;
+}
+
+p{
+    font-family: 'Futura BK BT', Arial, sans-serif;
     color: #ffffff;
+    font-size: 1rem;
+    margin-right: 2%;
 }

@@ -1,5 +1,23 @@
 :host {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+app-cabecalho {
+    z-index: 2;
+    position: relative;
+}
+
+#roteador {
+    flex-grow: 1;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+}
+
+app-rodape {
+    z-index: 2;
+    position: relative;
 }
