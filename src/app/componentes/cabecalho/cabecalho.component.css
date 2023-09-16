@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    align-items: center;
+    background: #005CA9;
+    height: 4rem;
+}
+
+h1{
+    padding-left: 4%;
+    font-family: 'Futura BD BT', Arial, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+}
