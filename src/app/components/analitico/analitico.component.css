@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Dá uma sombra leve para ter a aparência de um card */
+    border-radius: 8px;
+    /* Bordas arredondadas */
+    padding: 20px;
+    /* Espaçamento interno */
+    max-width: 80%;
+    /* Define uma largura máxima para o card */
+    background-color: #ffffff;
+    /* Cor de fundo branca */
+}

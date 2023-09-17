@@ -12,6 +12,9 @@ app-cabecalho {
 
 #roteador {
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow-y: auto;
     position: relative;
     z-index: 1;

@@ -1,0 +1,16 @@
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>Data Efetiva</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let lancamento of lancamentos">
+                <td>{{ lancamento.dataEfetiva }}</td>
+                <td>{{ lancamento.valor }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

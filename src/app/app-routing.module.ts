@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AnaliticoComponent } from './componentes/analitico/analitico.component';
+import { AnaliticoComponent } from './components/analitico/analitico.component';
 
 const routes: Routes = [
   { path: '', component: AnaliticoComponent },
