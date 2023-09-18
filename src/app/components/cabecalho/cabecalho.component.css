@@ -12,7 +12,7 @@ h1 {
 }
 
 .gradiente-texto {
-    background-image: linear-gradient(to right, #f39200 0%, #f39200 20%, #fff 100%),
+    background-image: linear-gradient(to right, #f39200 0%, #fff 80%, #fff 100%),
                       linear-gradient(to bottom, #f39200, #fff);
     -webkit-background-clip: text;
     background-clip: text;

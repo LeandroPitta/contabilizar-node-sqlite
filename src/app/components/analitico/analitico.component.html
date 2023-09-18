@@ -1,23 +1,54 @@
 <div class="card">
-    <table>
-        <thead>
-            <tr>                
-                <th>Data Efetiva</th>
-                <th>Débito</th>
-                <th>Crédito</th>
-                <th>Status</th>
-                <!-- Pendente / Em tratamento / Concluído -->
-                <th>Último Status</th>
+    <p-table #dt 
+        [value]="lancamentos" 
+        [(selection)]="selectedRow" 
+        dataKey="id" 
+        [globalFilterFields]="['dataEfetiva','debito','credito','status','ultimoStatus']"
+        [rows]="5" 
+        [showCurrentPageReport]="true" 
+        [rowsPerPageOptions]="[5, 10, 50]" 
+        [paginator]="true"
+        currentPageReportTemplate="{last} de {totalRecords} registros">
+
+        <!-- Cabeçalho com opções de ordenação -->
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="dataEfetiva">Data Efetiva <p-sortIcon field="dataEfetiva"></p-sortIcon></th>
+                <th pSortableColumn="debito">Débito <p-sortIcon field="debito"></p-sortIcon></th>
+                <th pSortableColumn="credito">Crédito <p-sortIcon field="credito"></p-sortIcon></th>
+                <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                <th pSortableColumn="ultimoStatus">Último Status <p-sortIcon field="ultimoStatus"></p-sortIcon></th>
             </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let lancamento of lancamentos">
-                <td>{{ lancamento.DataEfetiva }}</td>
-                <td>{{ lancamento.Debito }}</td>
-                <td>{{ lancamento.Credito }}</td>
-                <td>{{ lancamento.Status }}</td>
-                <td>{{ lancamento.UltimoStatus }}</td>
+            <tr>
+                <th><input type="text" [(ngModel)]="filtroDtEfetiva" (input)="dt.filter(filtroDtEfetiva, 'dataEfetiva', 'contains')"
+                        pInputText placeholder="por data efetiva" style="width:100%"></th>
+                <th><input type="text" [(ngModel)]="filtroDebito" (input)="dt.filter(filtroDebito, 'debito', 'contains')" pInputText
+                        placeholder="por débito" style="width:100%"></th>
+                <th><input type="text" [(ngModel)]="filtroCredito" (input)="dt.filter(filtroCredito, 'credito', 'contains')" pInputText
+                        placeholder="por crédito" style="width:100%"></th>
+                <th><input type="text" [(ngModel)]="filtroStatus" (input)="dt.filter(filtroStatus, 'status', 'contains')" pInputText
+                        placeholder="por status" style="width:100%"></th>
+                <th><input type="text" [(ngModel)]="filtroUlStatus" (input)="dt.filter(filtroUlStatus, 'ultimoStatus', 'contains')" pInputText
+                        placeholder="por último status" style="width:100%"></th>
             </tr>
-        </tbody>
-    </table>
+        </ng-template>
+
+        <!-- Corpo da tabela -->
+        <ng-template pTemplate="body" let-rowData>
+            <tr>
+                <td>{{ rowData.DataEfetiva }}</td>
+                <td>{{ rowData.Debito }}</td>
+                <td>{{ rowData.Credito }}</td>
+                <td>{{ rowData.Status }}</td>
+                <td>{{ rowData.UltimoStatus }}</td>
+            </tr>
+        </ng-template>
+
+        <!-- Mensagem quando não há dados -->
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="2">No records found</td>
+            </tr>
+        </ng-template>
+    </p-table>
 </div>

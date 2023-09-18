@@ -8,6 +8,12 @@ import { ContabilizarApiService } from '../../services/contabilizar-api-service'
 })
 export class AnaliticoComponent implements OnInit {
 
+  filtroDtEfetiva: string = '';
+  filtroDebito: string = '';
+  filtroCredito: string = '';
+  filtroStatus: string = '';
+  filtroUlStatus: string = '';
+  selectedRow: any;
   lancamentos: any[] = [];
 
   constructor(private ContabilizarApiService: ContabilizarApiService) { }
