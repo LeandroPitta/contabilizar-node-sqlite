@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ContabilizarApiService {
 
-  private baseUrl: string = 'http://localhost:8088/api/lancamentos-contabeis.txt';
+  private baseUrl: string = 'http://localhost:8088/api/apiContabilizar.asp';
 
   constructor(private httpClient: HttpClient) { }
 

@@ -1,15 +1,22 @@
 <div class="card">
     <table>
         <thead>
-            <tr>
+            <tr>                
                 <th>Data Efetiva</th>
-                <th>Valor</th>
+                <th>Débito</th>
+                <th>Crédito</th>
+                <th>Status</th>
+                <!-- Pendente / Em tratamento / Concluído -->
+                <th>Último Status</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let lancamento of lancamentos">
-                <td>{{ lancamento.dataEfetiva }}</td>
-                <td>{{ lancamento.valor }}</td>
+                <td>{{ lancamento.DataEfetiva }}</td>
+                <td>{{ lancamento.Debito }}</td>
+                <td>{{ lancamento.Credito }}</td>
+                <td>{{ lancamento.Status }}</td>
+                <td>{{ lancamento.UltimoStatus }}</td>
             </tr>
         </tbody>
     </table>
