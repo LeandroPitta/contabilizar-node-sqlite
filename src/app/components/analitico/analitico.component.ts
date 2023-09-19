@@ -38,7 +38,7 @@ export class AnaliticoComponent implements OnInit {
     });
   }
 
-  editar(): void {
-    this.router.navigate(['editar']);
+  editar(id: number): void {
+    this.router.navigate(['editar', id]);
   }
 }

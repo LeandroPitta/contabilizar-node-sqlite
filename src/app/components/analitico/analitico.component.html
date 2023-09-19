@@ -33,7 +33,7 @@
                 <td>{{ rowData.Status }}</td>
                 <td>{{ rowData.UltimoStatus }}</td>
                 <td>
-                    <button pButton pRipple type="button" icon="pi pi-pencil" (click)="editar()" class="p-button-rounded p-button-warning p-button-text" title="Editar"></button>
+                    <button pButton pRipple type="button" icon="pi pi-pencil" (click)="editar(rowData.ID)" class="p-button-rounded p-button-warning p-button-text" title="Editar"></button>
                 </td>
             </tr>
         </ng-template>

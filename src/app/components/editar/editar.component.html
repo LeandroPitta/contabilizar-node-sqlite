@@ -2,32 +2,33 @@
     <p>
         <mat-form-field appearance="outline" id="DataEfetiva">
             <mat-label>Data Efetiva</mat-label>
-            <input matInput type="text" name="DataEfetiva" disabled="true">
+            <input matInput type="text" [(ngModel)]="lancamento.DataEfetiva" name="DataEfetiva" disabled="true">
         </mat-form-field>
 
         <mat-form-field appearance="outline" id="Debito">
             <mat-label>Débito</mat-label>
-            <input matInput type="text" name="Debito" disabled="true">
+            <input matInput type="text" [(ngModel)]="lancamento.Debito" name="Debito" disabled="true">
         </mat-form-field>
 
         <mat-form-field appearance="outline" id="Credito">
             <mat-label>Crédito</mat-label>
-            <input matInput type="text" name="Credito" disabled="true">
+            <input matInput type="text" [(ngModel)]="lancamento.Credito" name="Credito" disabled="true">
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Status</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let statu of status" [value]="statu.value">
-                {{statu.viewValue}}
-              </mat-option>
+            <mat-select [(ngModel)]="lancamento.Status" name="Status">
+                <mat-option *ngFor="let statu of status" [value]="statu.value">
+                    {{statu.viewValue}}
+                </mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
 
         <mat-form-field appearance="outline" id="UltimoStatus" (click)="picker.open()">
             <mat-label>Último Status</mat-label>
-            <input matInput [matDatepicker]="picker" name="ultimo-status" (focus)="picker.open()" readonly>
+            <input matInput [(ngModel)]="lancamento.UltimoStatus" [matDatepicker]="picker" name="ultimo-status"
+                (focus)="picker.open()" readonly>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -52,7 +53,7 @@
     </p>
 
     <p>
-        <button mat-raised-button type="submit">Atualizar</button>
+        <button mat-raised-button type="submit">Salvar</button>
         <button mat-raised-button type="button" (click)="this.router.navigate([''])">Voltar</button>
     </p>
 </form>
