@@ -1,0 +1,58 @@
+<form (ngSubmit)="chamarApi()">
+    <p>
+        <mat-form-field appearance="outline" id="DataEfetiva">
+            <mat-label>Data Efetiva</mat-label>
+            <input matInput type="text" name="DataEfetiva" disabled="true">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" id="Debito">
+            <mat-label>Débito</mat-label>
+            <input matInput type="text" name="Debito" disabled="true">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" id="Credito">
+            <mat-label>Crédito</mat-label>
+            <input matInput type="text" name="Credito" disabled="true">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Status</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let statu of status" [value]="statu.value">
+                {{statu.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <mat-form-field appearance="outline" id="UltimoStatus" (click)="picker.open()">
+            <mat-label>Último Status</mat-label>
+            <input matInput [matDatepicker]="picker" name="ultimo-status" (focus)="picker.open()" readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </p>
+    <p>
+        <p-table [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+                <tr style="font-size: .8rem">
+                    <th style="width: 70%">Histórico</th>
+                    <th style="width: 20%">Funcionário</th>
+                    <th style="width: 10%">Data</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr style="font-size: .8rem">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+
+    <p>
+        <button mat-raised-button type="submit">Atualizar</button>
+        <button mat-raised-button type="button" (click)="this.router.navigate([''])">Voltar</button>
+    </p>
+</form>

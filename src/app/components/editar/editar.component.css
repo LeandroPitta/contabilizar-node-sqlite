@@ -1,0 +1,42 @@
+:host{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    font-family: "Futura Md Bt", "Arial", sans-serif;
+  }
+
+form {
+    width: 50%;
+    margin: 2% 0 14% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  mat-form-field {
+    width: 14rem;
+    margin: 2rem 2rem;
+  }
+    
+  button[type="submit"] {
+    height: 2.8rem;
+    width: 10rem;
+    background-color: #f39200;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  button[type="button"] {
+    height: 2.8rem;
+    width: 10rem;
+    background-color: #b3c7cb;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 1rem;
+  }
