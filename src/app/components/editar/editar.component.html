@@ -19,8 +19,8 @@
         <mat-form-field appearance="outline">
             <mat-label>Status</mat-label>
             <mat-select [(ngModel)]="lancamento.Status" name="Status">
-                <mat-option *ngFor="let statu of status" [value]="statu.value">
-                    {{statu.viewValue}}
+                <mat-option *ngFor="let status of status" [value]="status.value">
+                    {{status.viewValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
