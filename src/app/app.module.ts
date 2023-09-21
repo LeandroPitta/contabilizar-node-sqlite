@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
@@ -21,8 +22,16 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MAT_DATE_LOCALE} from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+import { AnaliticoXlsxComponent } from './components/analitico-xlsx/analitico-xlsx.component';
+import { MatIconModule } from '@angular/material/icon';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -30,7 +39,8 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
     CabecalhoComponent,
     RodapeComponent,
     AnaliticoComponent,
-    EditarComponent
+    EditarComponent,
+    AnaliticoXlsxComponent
   ],
   imports: [
     BrowserModule,
@@ -48,9 +58,15 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
     MatNativeDateModule,
     MatButtonModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule,
+    CommonModule,
+    MatIconModule
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

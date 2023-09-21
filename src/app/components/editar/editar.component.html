@@ -1,21 +1,23 @@
 <form (ngSubmit)="chamarApi()">
     <p>
+        <!-- Campo de Data Efetiva - está desativado para edição -->
         <mat-form-field appearance="outline" id="DataEfetiva">
             <mat-label>Data Efetiva</mat-label>
             <input matInput type="text" [(ngModel)]="lancamento.DataEfetiva" name="DataEfetiva" disabled="true">
         </mat-form-field>
-
+        <!-- Campo de Débito com formatação de moeda - está desativado para edição -->
         <mat-form-field appearance="outline" id="Debito">
             <mat-label>Débito</mat-label>
-            <input matInput type="text" [(ngModel)]="lancamento.Debito" name="Debito" disabled="true">
+            <input matInput type="text" [value]="debito | currency:'BRL'" disabled="true">
         </mat-form-field>
-
+        <!-- Campo de Crédito com formatação de moeda - está desativado para edição -->
         <mat-form-field appearance="outline" id="Credito">
             <mat-label>Crédito</mat-label>
-            <input matInput type="text" [(ngModel)]="lancamento.Credito" name="Credito" disabled="true">
+            <input matInput type="text" [value]="credito | currency:'BRL'" name="Credito" disabled="true">
         </mat-form-field>
     </p>
     <p>
+        <!-- Campo de seleção de Status -->
         <mat-form-field appearance="outline">
             <mat-label>Status</mat-label>
             <mat-select [(ngModel)]="lancamento.Status" name="Status">
@@ -24,7 +26,7 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-
+        <!-- Campo de seleção de Último Status com datepicker -->
         <mat-form-field appearance="outline" id="UltimoStatus" (click)="picker.open()">
             <mat-label>Último Status</mat-label>
             <input matInput [(ngModel)]="lancamento.UltimoStatus" [matDatepicker]="picker" name="ultimo-status"
@@ -33,26 +35,8 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
     </p>
-    <p>
-        <p-table [tableStyle]="{ 'min-width': '50rem' }">
-            <ng-template pTemplate="header">
-                <tr style="font-size: .8rem">
-                    <th style="width: 70%">Histórico</th>
-                    <th style="width: 20%">Funcionário</th>
-                    <th style="width: 10%">Data</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-product>
-                <tr style="font-size: .8rem">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </ng-template>
-        </p-table>
-    </p>
-
-    <p>
+    <!-- Seção de botões: Salvar e Voltar -->
+    <p>        
         <button mat-raised-button type="submit">Salvar</button>
         <button mat-raised-button type="button" (click)="this.router.navigate([''])">Voltar</button>
     </p>

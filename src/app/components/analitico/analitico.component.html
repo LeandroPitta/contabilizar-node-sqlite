@@ -1,9 +1,9 @@
 <div class="card">
+    <!-- Configuração da tabela -->
     <p-table #dt [value]="lancamentos" [loading]="loading" [(selection)]="selectedRow" dataKey="id"
         [globalFilterFields]="['DataEfetiva','Debito','Credito','Status','UltimoStatus']" [rows]="5"
         [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10, 50]" [paginator]="true"
         currentPageReportTemplate="{last} de {totalRecords} registros">
-
         <!-- Cabeçalho com opções de ordenação -->
         <ng-template pTemplate="header">
             <tr style="font-family: 'Futura BD BT', Arial, sans-serif;">
@@ -12,7 +12,7 @@
                 <th pSortableColumn="Credito">Crédito <p-sortIcon field="Credito"></p-sortIcon></th>
                 <th pSortableColumn="Status">Status <p-sortIcon field="Status"></p-sortIcon></th>
                 <th pSortableColumn="UltimoStatus">Último Status <p-sortIcon field="UltimoStatus"></p-sortIcon></th>
-                <th></th>
+                <th><button title="Exportar para Excel" class="excel-button" (click)="exportToXlsx()"><i class="fa fa-file-excel-o"></i></button></th>
             </tr>
             <tr>
                 <th><p-columnFilter type="text" field="DataEfetiva" matchMode="contains"></p-columnFilter></th>
@@ -23,13 +23,12 @@
                 <th></th>
             </tr>
         </ng-template>
-
         <!-- Corpo da tabela -->
         <ng-template pTemplate="body" let-rowData>
             <tr style="font-family: 'Futura BK BT', Arial, sans-serif;">
                 <td>{{ rowData.DataEfetiva }}</td>
-                <td>{{ rowData.Debito }}</td>
-                <td>{{ rowData.Credito }}</td>
+                <td>{{ rowData.Debito | currency:'BRL' }}</td>
+                <td>{{ rowData.Credito | currency:'BRL' }}</td>
                 <td>{{ rowData.Status }}</td>
                 <td>{{ rowData.UltimoStatus }}</td>
                 <td>
@@ -37,7 +36,6 @@
                 </td>
             </tr>
         </ng-template>
-
         <!-- Mensagem quando não há dados -->
         <ng-template pTemplate="emptymessage">
             <tr>
@@ -46,3 +44,5 @@
         </ng-template>
     </p-table>
 </div>
+<!-- Componente para exportar para XLSX -->
+<app-analitico-xlsx *ngIf="exporting" [lancamentos]="lancamentos"></app-analitico-xlsx>
