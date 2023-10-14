@@ -35,6 +35,7 @@ export class EditarComponent implements OnInit {
     // Solicitando os dados do lançamento pelo ID da API
     this.ContabilizarApiService.getLancamentoById(id).subscribe(data => {
       this.lancamento = data;
+      this.lancamento.DataEfetiva = this.formatarDataService.convertToDateStr(data.DataEfetiva);
       this.lancamento.UltimoStatus = this.formatarDataService.convertToDate(data.UltimoStatus);
       this.debito = this.convertToNumber(this.lancamento.Debito);
       this.credito = this.convertToNumber(this.lancamento.Credito);

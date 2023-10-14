@@ -7,8 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ContabilizarApiService {
 
-  private baseUrl: string = 'http://localhost:8088/api/apiContabilizar.asp';
-  private baseUrlEditar: string = 'http://localhost:8088/api/apiContabilizarEditar.asp';
+  private baseUrl: string = 'http://localhost:3000/api/lancamentos';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,17 +16,18 @@ export class ContabilizarApiService {
   }
 
   getLancamentoById(id: number): Observable<any> {
-    const url = `${this.baseUrlEditar}?id=${id}`;
+    // Atualize a URL para a sua API Node.js
+    const url = `${this.baseUrl}/${id}`;
     return this.httpClient.get<any>(url);
   }
 
   updateLancamento(id: number, status: string, ultimoStatus: string): Observable<any> {
-    const url = `${this.baseUrlEditar}?id=${id}`;
+    // Atualize a URL para a sua API Node.js
+    const url = `${this.baseUrl}/${id}`;
     const data = {
       Status: status,
       UltimoStatus: ultimoStatus
     };
-    return this.httpClient.post<any>(url, data);
+    return this.httpClient.put<any>(url, data);
   }
-
 }

@@ -12,8 +12,8 @@ h1 {
 }
 
 .gradiente-texto {
-    background-image: linear-gradient(to right, #f39200, #fff),
-                      linear-gradient(to bottom, #f39200, #fff);
+    background-image: linear-gradient(to right, #f39200, #f39200, #fff),
+                      linear-gradient(to bottom, #f39200, #f39200, #fff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
