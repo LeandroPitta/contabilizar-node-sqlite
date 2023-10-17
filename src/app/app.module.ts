@@ -30,6 +30,8 @@ import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { AnaliticoXlsxComponent } from './components/analitico-xlsx/analitico-xlsx.component';
 import { MatIconModule } from '@angular/material/icon';
+import { HistoricoComponent } from './components/historico/historico.component';
+import { MatCardModule } from '@angular/material/card';
 
 registerLocaleData(ptBr);
 
@@ -40,7 +42,8 @@ registerLocaleData(ptBr);
     RodapeComponent,
     AnaliticoComponent,
     EditarComponent,
-    AnaliticoXlsxComponent
+    AnaliticoXlsxComponent,
+    HistoricoComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ registerLocaleData(ptBr);
     MatSelectModule,
     MatSnackBarModule,
     CommonModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },

@@ -1,0 +1,47 @@
+:host {
+    width: 100%;
+    max-height: 18rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#historicos {
+    width: 60%;
+    background-color: #eff4f53d;
+    overflow-y: auto;
+}
+
+#historicos-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.historico {
+    width: 90%;
+    margin: .4rem 0;
+}
+
+div {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0;
+}
+
+mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0;
+}
+
+p {
+    margin-top: .6rem;
+}
+
+button {
+    color: #005CA9;
+}

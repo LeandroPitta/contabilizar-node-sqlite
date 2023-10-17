@@ -26,11 +26,11 @@
         <!-- Corpo da tabela -->
         <ng-template pTemplate="body" let-rowData>
             <tr style="font-family: 'Futura BK BT', Arial, sans-serif;">
-                <td>{{ rowData.DataEfetiva }}</td>
+                <td>{{ rowData.DataEfetiva | date:'dd/MM/yyyy':'UTC' }}</td>
                 <td>{{ rowData.Debito | currency:'BRL' }}</td>
                 <td>{{ rowData.Credito | currency:'BRL' }}</td>
                 <td>{{ rowData.Status }}</td>
-                <td>{{ rowData.UltimoStatus }}</td>
+                <td>{{ rowData.UltimoStatus | date:'dd/MM/yyyy':'UTC' }}</td>
                 <td>
                     <button pButton pRipple type="button" icon="pi pi-pencil" (click)="editar(rowData.ID)" class="p-button-rounded p-button-warning p-button-text" title="Editar"></button>
                 </td>
