@@ -1,0 +1,15 @@
+<form [formGroup]="historicoForm" (ngSubmit)="salvarHistorico()">
+    <mat-dialog-content>
+      <mat-form-field>
+        <input matInput formControlName="funcionario" placeholder="Nome do Funcionário" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="texto" placeholder="Digite o texto do histórico" required>
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+      <button mat-button type="submit" [disabled]="!historicoForm.valid">Salvar</button>
+    </mat-dialog-actions>
+  </form>
+  

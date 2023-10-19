@@ -32,6 +32,9 @@ import { AnaliticoXlsxComponent } from './components/analitico-xlsx/analitico-xl
 import { MatIconModule } from '@angular/material/icon';
 import { HistoricoComponent } from './components/historico/historico.component';
 import { MatCardModule } from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import { HistoricoDialogComponent } from './components/historico-dialog/historico-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(ptBr);
 
@@ -43,7 +46,8 @@ registerLocaleData(ptBr);
     AnaliticoComponent,
     EditarComponent,
     AnaliticoXlsxComponent,
-    HistoricoComponent
+    HistoricoComponent,
+    HistoricoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +69,9 @@ registerLocaleData(ptBr);
     MatSnackBarModule,
     CommonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
