@@ -20,6 +20,7 @@ export class EditarComponent implements OnInit {
   lancamento: any = {};
   debito: number = 0;
   credito: number = 0;
+  id: number = +this.route.snapshot.paramMap.get('id')!;
 
   constructor(
     public router: Router,
@@ -30,10 +31,7 @@ export class EditarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Obtendo o ID do lançamento a partir da rota
-    const id = +this.route.snapshot.paramMap.get('id')!;
-    // Solicitando os dados do lançamento pelo ID da API
-    this.ContabilizarApiService.getLancamentoById(id).subscribe(data => {
+    this.ContabilizarApiService.getLancamentoById(this.id).subscribe(data => {
       this.lancamento = data;
       this.lancamento.DataEfetiva = this.formatarDataService.convertToDateStr(data.DataEfetiva);
       this.lancamento.UltimoStatus = this.formatarDataService.convertToDate(data.UltimoStatus);
@@ -49,9 +47,8 @@ export class EditarComponent implements OnInit {
   ];
   // Método para chamar a API e atualizar o lançamento
   chamarApi() {
-    const id = +this.route.snapshot.paramMap.get('id')!;
     const formattedDate = this.formatarDataService.formatDateToCustomString(this.lancamento.UltimoStatus);
-    this.ContabilizarApiService.updateLancamento(id, this.lancamento.Status, formattedDate)
+    this.ContabilizarApiService.updateLancamento(this.id, this.lancamento.Status, formattedDate)
       .subscribe(
         response => {
           this.snackBar.open('Atualizado com sucesso', 'Fechar', {
