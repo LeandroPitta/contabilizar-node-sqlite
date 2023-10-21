@@ -14,6 +14,14 @@
     background-color: #ffffff;
 }
 
+.card th {
+    padding: .6rem 1rem;
+}
+
+.card td {
+    padding: .6rem 1rem;
+}
+
 button[type="button"] {
     color: #f39200;
 }

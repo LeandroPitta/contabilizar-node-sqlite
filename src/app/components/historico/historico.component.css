@@ -1,6 +1,6 @@
 :host {
     width: 100%;
-    max-height: 18rem;
+    max-height: 16rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +8,7 @@
 }
 
 #historicos {
-    width: 60%;
+    width: 70%;
     background-color: #eff4f53d;
     overflow-y: auto;
 }
@@ -25,13 +25,6 @@
     margin: .4rem 0;
 }
 
-div {
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-    padding-top: 0;
-}
-
 mat-card-header {
     display: flex;
     justify-content: space-between;
@@ -40,6 +33,7 @@ mat-card-header {
 
 p {
     margin-top: .6rem;
+    padding-left: 4rem;
 }
 
 button {

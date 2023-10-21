@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HistoricoApiService } from '../../services/historico-api-service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-historico-dialog',
@@ -11,31 +12,32 @@ import { HistoricoApiService } from '../../services/historico-api-service';
 
 export class HistoricoDialogComponent {
   historicoForm: FormGroup;
+  id: any;
 
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<HistoricoDialogComponent>,
-    private historicoApiService: HistoricoApiService
+    private historicoApiService: HistoricoApiService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.historicoForm = this.formBuilder.group({
-      funcionario: ['', Validators.required], // Aqui você pode adicionar validações personalizadas, se necessário
-      texto: ['', Validators.required],
+      funcionario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
+      texto: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
     });
+    this.id = data.id;
   }
 
   salvarHistorico() {
     if (this.historicoForm.valid) {
       const funcionario = this.historicoForm.get('funcionario')!.value;
       const texto = this.historicoForm.get('texto')!.value;
-      const id = 1; // Substitua pelo ID correto, se necessário
+      const id = this.id;
 
       this.historicoApiService.insertHistorico(id, texto, funcionario).subscribe(
         (response) => {
-          // A ação foi bem-sucedida, você pode realizar a lógica desejada, como fechar o diálogo e atualizar a lista de históricos.
-          this.dialogRef.close({ texto, funcionario }); // Fecha o diálogo e passa os dados de volta ao componente principal.
+          this.dialogRef.close({ texto, funcionario });
         },
         (error) => {
-          // Lidar com erros, se necessário
           console.error('Erro ao inserir histórico:', error);
         }
       );
@@ -43,6 +45,6 @@ export class HistoricoDialogComponent {
   }
 
   cancelar() {
-    this.dialogRef.close(); // Fecha o diálogo sem salvar nada.
+    this.dialogRef.close();
   }
 }

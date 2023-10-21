@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HistoricoApiService } from '../../services/historico-api-service';
 import { MatDialog } from '@angular/material/dialog';
 import { HistoricoDialogComponent } from '../historico-dialog/historico-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-historico',
@@ -17,7 +18,8 @@ export class HistoricoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private HistoricoApiService: HistoricoApiService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -30,18 +32,23 @@ export class HistoricoComponent implements OnInit {
 
   abrirDialog(): void {
     const dialogRef = this.dialog.open(HistoricoDialogComponent, {
-      width: '400px',
+      width: '50%',
+      data: { id: this.id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // O resultado é o que você deseja fazer com os dados inseridos no diálogo.
       if (result) {
-        // Aqui, você pode realizar a lógica com os dados do diálogo. Por exemplo, você pode atualizar sua lista de históricos com os novos dados.
-        console.log('Texto do histórico inserido:', result);
-        // Faça o que for necessário com os dados, como atualizar a lista de históricos.
-      } else {
-        // O usuário clicou em "Cancelar" ou fechou o diálogo sem salvar.
-        console.log('Diálogo cancelado');
+        this.snackBar.open('Histórico salvo com sucesso', 'Fechar', {
+          duration: 4000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: ['custom-snackbar']
+        });
+        this.HistoricoApiService.getHistoricoById(this.id).subscribe(data => {
+          this.contabilizarHistoricos = data.map((contabilizarHistorico: any) => ({
+            ...contabilizarHistorico,
+          }));
+        });
       }
     });
   }
