@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ContabilizarApiService {
 
-  private baseUrl: string = 'http://localhost:3000/api/contabilizar';
+  private baseUrl: string = 'http://localhost:3000/api/contabilizar/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -16,13 +16,11 @@ export class ContabilizarApiService {
   }
 
   getLancamentoById(id: number): Observable<any> {
-    // Atualize a URL para a sua API Node.js
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.get<any>(url);
   }
 
   updateLancamento(id: number, status: string, ultimoStatus: string): Observable<any> {
-    // Atualize a URL para a sua API Node.js
     const url = `${this.baseUrl}/${id}`;
     const data = {
       Status: status,

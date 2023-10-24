@@ -20,13 +20,14 @@ export class HistoricoDialogComponent {
     public dialogRef: MatDialogRef<HistoricoDialogComponent>,
     private historicoApiService: HistoricoApiService,
     private snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any // Recebe dados do componente pai.
   ) {
+    // Inicialização do formulário com validações.
     this.historicoForm = this.formBuilder.group({
       funcionario: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
       texto: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(250)]],
     });
-    this.id = data.id;
+    this.id = data.id; // Recebe o ID passado a partir do componente pai.
   }
 
   salvarHistorico() {
@@ -35,11 +36,14 @@ export class HistoricoDialogComponent {
       const texto = this.historicoForm.get('texto')!.value;
       const id = this.id;
 
+      // Chama o serviço para inserir um novo histórico.
       this.historicoApiService.insertHistorico(id, texto, funcionario).subscribe(
         (response) => {
           if (response.maxRegistro === 0) {
+            // Se a inserção for bem-sucedida, fecha o diálogo e retorna os dados.
             this.dialogRef.close({ texto, funcionario });
           } else {
+            // Se o limite de registros for excedido, exibe uma notificação e cancela
             this.cancelar();
             this.snackBar.open(
               'Não é possível incluir mais de 10 registros no histórico',

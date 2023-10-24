@@ -23,6 +23,7 @@ export class HistoricoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Ao inicializar o componente, obtém os históricos com base no ID.
     this.HistoricoApiService.getHistoricoById(this.id).subscribe(data => {
       this.contabilizarHistoricos = data.map((contabilizarHistorico: any) => ({
         ...contabilizarHistorico,
@@ -31,11 +32,13 @@ export class HistoricoComponent implements OnInit {
   }
 
   abrirDialog(): void {
+    // Abre um diálogo para adicionar um novo histórico.
     const dialogRef = this.dialog.open(HistoricoDialogComponent, {
       width: '50%',
       data: { id: this.id }
     });
 
+    // Assina os eventos após o fechamento do diálogo.
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.snackBar.open('Histórico salvo com sucesso', 'Fechar', {
@@ -44,6 +47,8 @@ export class HistoricoComponent implements OnInit {
           verticalPosition: 'bottom',
           panelClass: ['custom-snackbar']
         });
+
+        // Atualiza a lista de históricos após adicionar um novo.
         this.HistoricoApiService.getHistoricoById(this.id).subscribe(data => {
           this.contabilizarHistoricos = data.map((contabilizarHistorico: any) => ({
             ...contabilizarHistorico,

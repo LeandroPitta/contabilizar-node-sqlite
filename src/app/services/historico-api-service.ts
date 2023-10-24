@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HistoricoApiService {
 
-  private baseUrl: string = 'http://localhost:3000/api/historico';
+  private baseUrl: string = 'http://localhost:3000/api/historico/';
 
   constructor(private httpClient: HttpClient) { }
 

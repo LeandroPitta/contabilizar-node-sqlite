@@ -23,17 +23,15 @@
 .historico {
     width: 90%;
     margin: .4rem 0;
+    overflow: auto;
+    /* Permite que o card aumente de tamanho para acomodar o texto */
+    word-wrap: break-word;
 }
 
 mat-card-header {
     display: flex;
     justify-content: space-between;
     padding-top: 0;
-}
-
-p {
-    margin-top: .6rem;
-    padding-left: 4rem;
 }
 
 button {
